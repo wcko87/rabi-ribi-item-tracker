@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Item Tracker</title>
+    </head>
+    <body class="main">
+        <center>
+            <div id='window'>
+                <canvas style="outline-style:solid;outline-width:1px" id="mainCanvas"></canvas>
+                <script src="game.js"></script>
+            </div>
+            <br><br><br><br>
+            <div>
+                <font color="#ff0000"><span id="errorBox"></span></font><br>
+                Background Color: <input type="text" value="#000000" style="width:80px" id="backgroundColor"><br>
+                Size - X: <input type="number" style="width:60px" value="512" id="canvasSizeX"> Y: <input type="number" style="width:60px"  value="200" id="canvasSizeY"><br>
+                Item List:<br>
+<textarea id="itemList" rows="15" cols="30">
+PIKO_HAMMER
+WALL_JUMP
+RABI_SLIPPERS
+AIR_JUMP
+AIR_DASH
+BUNNY_WHIRL
+HAMMER_ROLL
+SLIDING_POWDER
+CARROT_BOMB
+CARROT_SHOOTER
+FIRE_ORB
+WATER_ORB
+BUNNY_STRIKE
+BUNNY_AMULET
+SPEED_BOOST
+
+RAINBOW_EGG
+RAINBOW_EGG
+RAINBOW_EGG
+RAINBOW_EGG
+RAINBOW_EGG
+RAINBOW_EGG
+RAINBOW_EGG
+</textarea><br>
+                Toggle Order:<br>
+<textarea id="modeList" rows="5" cols="30">
+OFF
+ON
+CROSS
+CIRCLE
+</textarea><br>
+                <button onclick="initializeBoard()">Refresh Board</button>
+            </div>
+        </center>
+        <script type='text/javascript'>window.onLoad = initializeBoard();</script>
+    </body>
+</html>
