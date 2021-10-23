@@ -1,8 +1,13 @@
-var PAD = 5;
-var SIZE_X = 500;
-var SIZE_Y = 200;
-var RES_X = 500 + PAD*2;
-var RES_Y = 200 + PAD*2;
+var PAD = localStorage.getItem("RABI_PAD") ? parseInt(localStorage.getItem("RABI_PAD")) : 5;
+var SIZE_X = localStorage.getItem("RABI_SIZE_X") ? parseInt(localStorage.getItem("RABI_SIZE_X")) : 500;
+var SIZE_Y = localStorage.getItem("RABI_SIZE_Y") ? parseInt(localStorage.getItem("RABI_SIZE_Y")) : 200;
+var RES_X = SIZE_X + PAD*2;
+var RES_Y = SIZE_Y + PAD*2;
+var backgroundColor = localStorage.getItem("RABI_BG_COLOR") ? localStorage.getItem("RABI_BG_COLOR") : "#000000";
+
+document.getElementById("canvasSizeX").setAttribute("value", SIZE_X);
+document.getElementById("canvasSizeY").setAttribute("value", SIZE_Y);
+document.getElementById("backgroundColor").value = backgroundColor;
 
 var mainCanvas = document.getElementById('mainCanvas');
 mainCanvas.width = RES_X;
@@ -20,21 +25,20 @@ spriteSheetActive.addEventListener('load', function() {hasChangeToDraw = true;})
 var spriteSheetInactive = new Image();
 spriteSheetInactive.src = "item_inactive.png";
 spriteSheetInactive.addEventListener('load', function() {hasChangeToDraw = true;});
-hasChangeToDraw = false;
+var hasChangeToDraw = false;
 
 
-MODE_OFF = 0;
-MODE_ON = 1;
-MODE_CROSS = 2;
-MODE_CIRCLE = 3;
+var MODE_OFF = 0;
+var MODE_ON = 1;
+var MODE_CROSS = 2;
+var MODE_CIRCLE = 3;
 
-ICON_WIDTH = 64;
+var ICON_WIDTH = 64;
 
-itemIcons = [];
-toggleList = [0,2,3,1];
-backgroundColor = '#000000';
+var itemIcons = [];
+var toggleList = [0,2,3,1];
 
-errorList = [];
+var errorList = [];
 function error(message) {
     errorList.push(message);
 }
@@ -76,6 +80,8 @@ function initializeBoard() {
         backgroundColor = bgColorText;
     }
 
+    localStorage.setItem("RABI_BG_COLOR", backgroundColor);
+
     var errorMessage = "";
     if (errorList.length > 0) {
         errorMessage = "Error:<br>" + errorList.join("<br>")
@@ -97,6 +103,10 @@ function resizeCanvas(sizeX, sizeY) {
 
     mainCanvas.width = RES_X;
     mainCanvas.height = RES_Y;
+
+    localStorage.setItem("RABI_SIZE_X", SIZE_X.toString());
+    localStorage.setItem("RABI_SIZE_Y", SIZE_Y.toString());
+
 }
 
 function addItem(index, item_id) {
@@ -230,15 +240,14 @@ function gameLoop(time){
 
 gameLoop();
 
-
-MODE_ID_MAP = {
+var MODE_ID_MAP = {
     "OFF": MODE_OFF,
     "ON": MODE_ON,
     "CROSS": MODE_CROSS,
     "CIRCLE": MODE_CIRCLE
 };
 
-ITEM_ID_MAP = {
+var ITEM_ID_MAP = {
     "NATURE_ORB": 20,
     "BLESSED": 86,
     "TOXIC_STRIKE": 81,
