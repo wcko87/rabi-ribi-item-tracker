@@ -1,56 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <title>Item Tracker</title>
     </head>
-    <body class="main">
-        <center>
+    <body class="main" style="text-align: center">
+        <div>
             <div id='window'>
                 <canvas style="outline-style:solid;outline-width:1px" id="mainCanvas"></canvas>
-                <script src="itemtracker.js"></script>
             </div>
             <br><br><br><br>
             <div>
-                <font color="#ff0000"><span id="errorBox"></span></font><br>
-                Background Color: <input type="text" value="#000000" style="width:80px" id="backgroundColor"><br>
-                Size - X: <input type="number" style="width:60px" value="512" id="canvasSizeX"> Y: <input type="number" style="width:60px"  value="200" id="canvasSizeY"><br>
-                Item List:<br>
-<textarea id="itemList" rows="15" cols="30">
-PIKO_HAMMER
-SLIDING_POWDER
-RABI_SLIPPERS
-AIR_JUMP
-WALL_JUMP
-AIR_DASH
-BUNNY_WHIRL
-HAMMER_ROLL
-CARROT_BOMB
-CARROT_SHOOTER
-FIRE_ORB
-WATER_ORB
-LIGHT_ORB
-SPEED_BOOST
-BUNNY_STRIKE
-BUNNY_AMULET
-
-RAINBOW_EGG
-RAINBOW_EGG
-RAINBOW_EGG
-RAINBOW_EGG
-RAINBOW_EGG
-RAINBOW_EGG
-RAINBOW_EGG
+                <span style="color: #ff0000; "><span id="errorBox"></span></span><br>
+                <label for="backgroundColor">Background Color: </label><input type="text" value="#000000" style="width:80px" id="backgroundColor"><br>
+                <label for="canvasSizeX">Size - X: </label><input type="number" style="width:60px" value="512" id="canvasSizeX">
+                <label for="canvasSizeY"> Y: </label><input type="number" style="width:60px" value="200" id="canvasSizeY"><br>
+                <label for="itemList">Item List:</label><br>
+                <textarea id="itemList" rows="15" cols="30">
+LOADING...
 </textarea><br>
-                Toggle Order:<br>
-<textarea id="modeList" rows="5" cols="30">
-OFF
-ON
-CROSS
-CIRCLE
+                <label for="modeList">Toggle Order:</label><br>
+                <textarea id="modeList" rows="5" cols="30">
+LOADING...
 </textarea><br>
                 <button onclick="initializeBoard()">Refresh Board</button>
+                <button onclick="reloadDefaults()">Reload Defaults</button>
             </div>
-        </center>
-        <script type='text/javascript'>window.onLoad = initializeBoard();</script>
+            <span>Tracker originally by wcko87, further changed by Marenthyu.</span>
+        </div>
+        <script src="itemtracker.js"></script>
+        <script type='text/javascript'>window.addEventListener("load", initializeBoard);</script>
     </body>
 </html>
