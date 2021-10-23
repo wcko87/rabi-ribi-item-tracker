@@ -1,5 +1,5 @@
 var PAD = localStorage.getItem("RABI_PAD") ? parseInt(localStorage.getItem("RABI_PAD")) : 5;
-var SIZE_X = localStorage.getItem("RABI_SIZE_X") ? parseInt(localStorage.getItem("RABI_SIZE_X")) : 500;
+var SIZE_X = localStorage.getItem("RABI_SIZE_X") ? parseInt(localStorage.getItem("RABI_SIZE_X")) : 512;
 var SIZE_Y = localStorage.getItem("RABI_SIZE_Y") ? parseInt(localStorage.getItem("RABI_SIZE_Y")) : 200;
 var RES_X = SIZE_X + PAD*2;
 var RES_Y = SIZE_Y + PAD*2;
