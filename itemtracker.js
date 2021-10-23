@@ -5,6 +5,41 @@ var RES_X = SIZE_X + PAD*2;
 var RES_Y = SIZE_Y + PAD*2;
 var backgroundColor = localStorage.getItem("RABI_BG_COLOR") ? localStorage.getItem("RABI_BG_COLOR") : "#000000";
 
+var DEFAULT_ITEM_LIST = "PIKO_HAMMER\n" +
+    "SLIDING_POWDER\n" +
+    "RABI_SLIPPERS\n" +
+    "AIR_JUMP\n" +
+    "WALL_JUMP\n" +
+    "AIR_DASH\n" +
+    "BUNNY_WHIRL\n" +
+    "HAMMER_ROLL\n" +
+    "CARROT_BOMB\n" +
+    "CARROT_SHOOTER\n" +
+    "FIRE_ORB\n" +
+    "WATER_ORB\n" +
+    "LIGHT_ORB\n" +
+    "SPEED_BOOST\n" +
+    "BUNNY_STRIKE\n" +
+    "BUNNY_AMULET\n" +
+    "\n" +
+    "RAINBOW_EGG\n" +
+    "RAINBOW_EGG\n" +
+    "RAINBOW_EGG\n" +
+    "RAINBOW_EGG\n" +
+    "RAINBOW_EGG\n" +
+    "RAINBOW_EGG\n" +
+    "RAINBOW_EGG";
+
+var DEFAULT_TOGGLE_ORDER = "OFF\n" +
+    "ON\n" +
+    "CROSS\n" +
+    "CIRCLE";
+
+var currentItemList = localStorage.getItem("RABI_ITEM_LIST") ? JSON.parse(localStorage.getItem("RABI_ITEM_LIST")).join("\n") : DEFAULT_ITEM_LIST;
+document.getElementById("itemList").innerHTML = currentItemList;
+var currentToggleOrder = localStorage.getItem("RABI_TOGGLE_ORDER") ? JSON.parse(localStorage.getItem("RABI_TOGGLE_ORDER")).join("\n") : DEFAULT_TOGGLE_ORDER;
+document.getElementById("modeList").innerHTML = currentToggleOrder;
+
 document.getElementById("canvasSizeX").setAttribute("value", SIZE_X);
 document.getElementById("canvasSizeY").setAttribute("value", SIZE_Y);
 document.getElementById("backgroundColor").value = backgroundColor;
@@ -46,6 +81,7 @@ function error(message) {
 function initializeBoard() {
     errorList = [];
     var items = document.getElementById("itemList").value.split("\n");
+    localStorage.setItem("RABI_ITEM_LIST", JSON.stringify(items));
     var item_id_list = [];
     for (var i=0; i<items.length; ++i) {
         var key = items[i].trim().toUpperCase();
@@ -60,6 +96,7 @@ function initializeBoard() {
     }
 
     var modes = document.getElementById("modeList").value.split("\n");
+    localStorage.setItem("RABI_TOGGLE_ORDER", JSON.stringify(modes));
     var mode_id_list = [];
     for (var i=0; i<modes.length; ++i) {
         var key = modes[i].trim().toUpperCase();
