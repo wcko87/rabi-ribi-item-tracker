@@ -36,9 +36,9 @@ const DEFAULT_TOGGLE_ORDER = "OFF\n" +
     "CIRCLE";
 
 const currentItemList = localStorage.getItem("RABI_ITEM_LIST") ? JSON.parse(localStorage.getItem("RABI_ITEM_LIST")).join("\n") : DEFAULT_ITEM_LIST;
-document.getElementById("itemList").innerHTML = currentItemList;
+document.getElementById("itemList").value = currentItemList;
 const currentToggleOrder = localStorage.getItem("RABI_TOGGLE_ORDER") ? JSON.parse(localStorage.getItem("RABI_TOGGLE_ORDER")).join("\n") : DEFAULT_TOGGLE_ORDER;
-document.getElementById("modeList").innerHTML = currentToggleOrder;
+document.getElementById("modeList").value = currentToggleOrder;
 
 document.getElementById("canvasSizeX").setAttribute("value", SIZE_X);
 document.getElementById("canvasSizeY").setAttribute("value", SIZE_Y);
@@ -174,6 +174,25 @@ const ITEM_ID_MAP = {
     "PACK_UP": 100,
     "RAINBOW_EGG": 47
 };
+
+function reloadDefaults() {
+    PAD = 5;
+    SIZE_X = 512;
+    SIZE_Y = 200;
+    mainCanvas.width = RES_X;
+    mainCanvas.height = RES_Y;
+    backgroundColor = '#000000';
+
+    document.getElementById("itemList").value = DEFAULT_ITEM_LIST;
+    document.getElementById("modeList").value = DEFAULT_TOGGLE_ORDER;
+
+    document.getElementById("canvasSizeX").setAttribute("value", SIZE_X);
+    document.getElementById("canvasSizeY").setAttribute("value", SIZE_Y);
+    document.getElementById("backgroundColor").value = backgroundColor;
+
+    initializeBoard();
+    return true;
+}
 
 function initializeBoard() {
     let key;
